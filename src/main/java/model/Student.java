@@ -1,7 +1,8 @@
 package model;
 
 
-import java.util.Date;
+
+
 
 public class Student {
     private int studentId;
@@ -13,12 +14,12 @@ public class Student {
     private String course;
     private String address;
     private String photo;
-    private Date admissionDate;
+
 
     public Student() {
     }
 
-    public Student(int studentId, String lastName, String firstName, String email, String phone, String course, String gender, String address, String photo, Date admissionDate) {
+    public Student(int studentId, String lastName, String firstName, String email, String phone, String course, String gender, String address, String photo) {
         this.studentId = studentId;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -28,7 +29,6 @@ public class Student {
         this.gender = gender;
         this.address = address;
         this.photo = photo;
-        this.admissionDate = admissionDate;
     }
 
     public int getStudentId() {
@@ -103,11 +103,5 @@ public class Student {
         this.photo = photo;
     }
 
-    public Date getAdmissionDate() {
-        return admissionDate;
-    }
 
-    public void setAdmissionDate(Date admissionDate) {
-        this.admissionDate = admissionDate;
-    }
 }
