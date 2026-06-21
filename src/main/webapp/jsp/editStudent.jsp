@@ -39,9 +39,11 @@ Student s = (Student) request.getAttribute("student");
 <h2>Edit Student</h2>
 
 
-<form action="<%=request.getContextPath()%>/updateStudent" method="post">
+<form action="<%=request.getContextPath()%>/updateStudent" method="post" enctype="multipart/form-data">
 
  <input type="hidden" name="studentId" value="<%=s.getStudentId()%>">
+
+ <input type="hidden" name="oldPhoto" value="<%=s.getPhoto()%>">
 
 
   <div class="row"> <div class="col-md-6 mb-3">
@@ -80,9 +82,31 @@ Student s = (Student) request.getAttribute("student");
             <div class="mb-3">
           <label class="form-label"> Course </label>
           <input type="text" class="form-control" name="course" value="<%=s.getCourse()%>">
-          </div> <div class="mb-3"> <label class="form-label"> Address </label>
+          </div>
+
+          <div class="mb-3">
+           <label class="form-label"> Address </label>
            <textarea class="form-control" rows="3" name="address"><%=s.getAddress()%></textarea>
            </div>
+
+
+
+
+
+          <div class="mb-3">
+            <label class="form-label">Current Photo</label>
+            <br>
+            <img src="<%=request.getContextPath()%>/images/<%=s.getPhoto()%>" width="120" heighr="120"
+            style ="border-radius:10px;">
+            </div>
+
+            <div class="mb-3">
+            <label class="form=lable">New Photo</label>
+            <input type="file" class="form-control" name="photo">
+          </div>
+
+
+
 
            <div class="d-flex gap-2">
             <button type="submit" class="btn btn-primary"> Update Student </button>
