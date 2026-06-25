@@ -16,15 +16,15 @@ Student Management System
 
 <div class="card">
 
-<a href="addStudent.jsp">
-Add Student
-</a>
+    <a href="addStudent.jsp">
+      Add Student
+       </a>
 
 <br><br>
 
-<a href="../viewStudents">
-View Students
-</a>
+              <a href="../viewStudents">
+                View Students
+              </a>
 
 </div>
 

@@ -4,7 +4,9 @@ import model.Student;
 
 import java.util.List;
 
-public interface StudentDAO {
+public interface StudentDAO { // what to do
+
+
     boolean addStudent(Student student);
 
     List<Student> getAllStudent();

@@ -22,20 +22,24 @@ public class AddStudentServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
 
-        //read uploaded file
+        //receives uploaded image from form
         Part filePart = request.getPart("photo");
 
+        //	Gets the file name (e.g., profile.jpg).
         String fileName = filePart.getSubmittedFileName();
 
+        //	Finds the physical path of the images folder.
         String uploadPath = getServletContext().getRealPath("") + "images";
 
-        //save image
+        //Creates a File object pointing to the images folder
         File uploadDir = new File(uploadPath);
 
+        //Creates the folder if it doesn't exist.
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
 
+        //Saves the image into the images folder.
         filePart.write(uploadPath + File.separator + fileName);
 
 
@@ -57,7 +61,7 @@ public class AddStudentServlet extends HttpServlet {
         student.setGender(gender);
         student.setCourse(course);
         student.setAddress(address);
-        student.setPhoto(fileName);
+        student.setPhoto(fileName); //•	Stores only the image filename in PostgreSQL. 
 
         StudentDAOImpl dao = new StudentDAOImpl();
 

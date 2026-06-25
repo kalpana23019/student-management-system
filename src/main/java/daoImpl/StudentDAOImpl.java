@@ -12,11 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO {
+
+
     //add student
     @Override
     public boolean addStudent(Student student) {
 
-        Connection con = DBConnection.getConnetion();
+        Connection con = DBConnection.getConnection();
         try {
             PreparedStatement ps = con.prepareStatement("insert into students (first_name ,last_name,email,phone,gender,course,address,photo)" +
                     "values (?,?,?,?,?,?,?,?)");
@@ -39,6 +41,7 @@ public class StudentDAOImpl implements StudentDAO {
 
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
+
         }
 
         return false;
@@ -50,7 +53,7 @@ public class StudentDAOImpl implements StudentDAO {
 
         List<Student> students = new ArrayList<>();
 
-        Connection con = DBConnection.getConnetion();
+        Connection con = DBConnection.getConnection();
         try {
             PreparedStatement ps = con.prepareStatement("Select * from students order by student_id");
             ResultSet rs = ps.executeQuery();
@@ -84,7 +87,7 @@ public class StudentDAOImpl implements StudentDAO {
 
         Student student = null;
 
-        Connection con = DBConnection.getConnetion();
+        Connection con = DBConnection.getConnection();
         try {
             PreparedStatement ps = con.prepareStatement("select * from students where student_id=?");
             ps.setInt(1, id);
@@ -116,7 +119,7 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public boolean updateStudent(Student student) {
 
-        Connection con = DBConnection.getConnetion();
+        Connection con = DBConnection.getConnection();
         try {
             PreparedStatement ps = con.prepareStatement(" UPDATE students  SET first_name=?,last_name=? ,email=? ," +
                     " phone=?,gender=?,course=?," +
@@ -149,7 +152,7 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public boolean deleteStudent(int id) {
 
-        Connection con = DBConnection.getConnetion();
+        Connection con = DBConnection.getConnection();
         try {
             PreparedStatement ps = con.prepareStatement("delete from students where student_id=?");
             ps.setInt(1, id);
@@ -168,16 +171,17 @@ public class StudentDAOImpl implements StudentDAO {
         return false;
     }
 
+    //Search Student
     @Override
     public List<Student> searchStudent(String keyword) {
 
         List<Student> students = new ArrayList<>();
 
-        Connection con = DBConnection.getConnetion();
+        Connection con = DBConnection.getConnection();
         try {
             PreparedStatement ps = con.prepareStatement("select * from students " +
                     "where first_name ILIKE ? or last_name ILIKE ?" +
-                    " or course ILIKE ?");
+                    " or course ILIKE ? or student_id ILIKE ?");
 
             String search = "%" + keyword + "%";
 
