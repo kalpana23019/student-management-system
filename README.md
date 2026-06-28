@@ -144,23 +144,23 @@ http://localhost:8080/StudentManagmentSystem/
 
 # Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.jpeg)
 
 # Add Student
 
-![Add Student](screenshots/add-student.png)
+![Add Student](screenshots/add-student.jpeg)
 
 # View Students
 
-![View Students](screenshots/view-students.png)
+![View Students](screenshots/view-students.jpeg)
 
 # Edit Student
 
-![Edit Student](screenshots/edit-student.png)
+![Edit Student](screenshots/edit-student.jpeg)
 
 # Search Student
 
-![Search Student](screenshots/search.png)
+![Search Student](screenshots/search.jpeg)
 
 # Pagination
 
