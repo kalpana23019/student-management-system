@@ -158,7 +158,7 @@ http://localhost:8080/StudentManagmentSystem/
 ![Search Student](screenshort/search.png)
 
 ### Pagination
-![Pagination](screenshort/pagination.png)
+![Pagination](screenshort/paginatation.png)
 
 ---
 
