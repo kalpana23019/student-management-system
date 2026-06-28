@@ -181,7 +181,7 @@ public class StudentDAOImpl implements StudentDAO {
         try {
             PreparedStatement ps = con.prepareStatement("select * from students " +
                     "where first_name ILIKE ? or last_name ILIKE ?" +
-                    " or course ILIKE ? or student_id ILIKE ?");
+                    " or course ILIKE ?");
 
             String search = "%" + keyword + "%";
 

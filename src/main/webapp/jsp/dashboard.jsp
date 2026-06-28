@@ -1,32 +1,43 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<!DOCTYPE html>
 <html>
+
 <head>
-<title>Dashboard</title>
 
-<link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
 
+    <title>Student Management System</title>
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>
-Student Management System
-</h1>
+    <div class="dashboard-card">
 
-<div class="card">
+        <h1>🎓 Student Management System</h1>
 
-    <a href="addStudent.jsp">
-      Add Student
-       </a>
+        <p class="subtitle">
+            Manage student records easily with CRUD operations,
+            search, image upload and pagination.
+        </p>
 
-<br><br>
+        <div class="menu">
 
-              <a href="../viewStudents">
-                View Students
-              </a>
+            <a href="addStudent.jsp" class="btn add-btn">
+                ➕ Add Student
+            </a>
 
-</div>
+            <a href="../viewStudents" class="btn view-btn">
+                📋 View Students
+            </a>
+
+        </div>
+
+    </div>
 
 </div>
 
