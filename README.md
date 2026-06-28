@@ -142,29 +142,23 @@ http://localhost:8080/StudentManagmentSystem/
 
 ## 📸 Screenshots
 
-# Dashboard
+### Dashboard
+![Dashboard](screenshort/dashboard.png)
 
-![Dashboard](screenshots/dashboard.jpeg)
+### Add Student
+![Add Student](screenshort/add-student.jpeg)
 
-# Add Student
+### View Students
+![View Students](screenshort/view-student.jpeg)
 
-![Add Student](screenshots/add-student.jpeg)
+### Edit Student
+![Edit Student](screenshort/edit-student.jpeg)
 
-# View Students
+### Search Student
+![Search Student](screenshort/search.png)
 
-![View Students](screenshots/view-students.jpeg)
-
-# Edit Student
-
-![Edit Student](screenshots/edit-student.jpeg)
-
-# Search Student
-
-![Search Student](screenshots/search.jpeg)
-
-# Pagination
-
-![Pagination](screenshots/paginataion.png)
+### Pagination
+![Pagination](screenshort/pagination.png)
 
 ---
 
