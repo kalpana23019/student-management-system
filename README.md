@@ -185,6 +185,5 @@ This project helped me understand:
 
 GitHub: https://github.com/kalpana23019
 
----
 
-## ⭐ If you found this project helpful, please consider giving it a Star.
+
