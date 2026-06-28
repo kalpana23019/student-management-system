@@ -18,14 +18,36 @@ public class ViewStudentServlet extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
 
+
+        //Current page
+        int page = 1;
+        //students per page
+        int recordPerPage = 5;
+
+        //if user click page 2 0r 3
+        if (request.getParameter("page") != null) {
+
+            page = Integer.parseInt(request.getParameter("page"));
+        }
+
+        //calculate starting row
+        int offset = (page - 1) * recordPerPage;
+
+
         StudentDAOImpl dao = new StudentDAOImpl();
 
+        //get student for current page
+        List<Student> students = dao.getStudentByPage(offset, recordPerPage);
 
-        List<Student> students = dao.getAllStudent();
+        //total student for current page
+        int totalStudent = dao.getStudentCount();
 
-        System.out.println("Students Count = " + students.size());
+        //total pages
+        int totalPages = (int) Math.ceil((double) totalStudent / recordPerPage);
 
         request.setAttribute("students", students);
+        request.setAttribute("currentPage", page);
+        request.setAttribute("totalPages", totalPages);
 
         request.getRequestDispatcher("/jsp/viewStudents.jsp")
                 .forward(request, response);

@@ -93,6 +93,53 @@ height="80">
              <% } } %>
           </tbody>
            </table>
-            </div>
+           </div>
+
+           <%
+            Integer currentPage =(Integer) request.getAttribute("currentPage");
+             Integer totalPages =(Integer) request.getAttribute("totalPages");
+
+             if(currentPage==null){
+             currentPage=1;
+             }
+
+             if(totalPages ==null){
+             totalPages=1;
+             }
+
+
+            %>
+
+            <nav class="mt-4">
+              <ul class="pagination justify-content-center">
+
+              <!--Previous Button-->
+                <li class="page-item <%= (currentPage ==1) ? "disabled": "" %>">
+                  <a class="page-link" href="<%=request.getContextPath()%>/viewStudents?page=<%=currentPage-1%>">
+                  Previous
+                  </a>
+                </li>
+                <!--Page Numbers-->
+                <% for(int i =1;i<=totalPages;i++)
+                {
+                %>
+
+                <li class="page-item <%=(i== currentPage) ? "active" : "" %>">
+                    <a class="page-link" href="<%=request.getContextPath()%>/viewStudents?page=<%=i%>">
+                    <%=i%>
+                    </a>
+                </li>
+                <%
+                }
+                %>
+                <!--Next Button-->
+                <li class="page-item <%= (currentPage == totalPages) ? "disabled" : ""%>">
+                  <a class="page-link" href="<%=request.getContextPath()%>/viewStudents?page=<%=currentPage+1%>">
+                  Next
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
 </body>
 </html>

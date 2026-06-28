@@ -216,5 +216,67 @@ public class StudentDAOImpl implements StudentDAO {
         return students;
     }
 
+    //get students page by page
+    @Override
+    public List<Student> getStudentByPage(int offset, int limit) {
+
+        List<Student> students = new ArrayList<>();
+
+        Connection con = DBConnection.getConnection();
+
+        try {
+            PreparedStatement ps = con.prepareStatement("Select * from students order by student_id LIMIT ? OFFSET ?");
+            //number of records per page
+            ps.setInt(1, limit);
+            //Starting record
+            ps.setInt(2, offset);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Student student = new Student();
+
+                student.setStudentId(rs.getInt("student_id"));
+                student.setFirstName(rs.getString("first_name"));
+                student.setLastName(rs.getString("last_name"));
+                student.setEmail(rs.getString("email"));
+                student.setPhone(rs.getString("phone"));
+                student.setGender(rs.getString("gender"));
+                student.setCourse(rs.getString("course"));
+                student.setAddress(rs.getString("address"));
+                student.setPhoto(rs.getString("photo"));
+
+                students.add(student);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return students;
+    }
+
+    // get total number of student
+    @Override
+    public int getStudentCount() {
+        int count = 0;
+
+        Connection con = DBConnection.getConnection();
+
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT count(*) from students");
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+
 
 }
