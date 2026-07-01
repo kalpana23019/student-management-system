@@ -3,8 +3,10 @@ package controller;
 import daoImpl.StudentDAOImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
-
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Student;
 
 import java.io.IOException;
@@ -15,6 +17,14 @@ public class EditStudentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null || session.getAttribute("admin") == null) {
+
+            response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");
+            return;
+        }
 
         int id =
                 Integer.parseInt(
@@ -32,6 +42,6 @@ public class EditStudentServlet extends HttpServlet {
 
         request.getRequestDispatcher(
                         "/jsp/editStudent.jsp")
-                .forward(request,response);
+                .forward(request, response);
     }
 }

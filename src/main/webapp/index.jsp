@@ -1,7 +1,7 @@
 <html>
 <body>
 <%
-response.sendRedirect("jsp/dashboard.jsp");
+response.sendRedirect("jsp/login.jsp");
 %>
 </body>
 </html>
