@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -15,6 +16,13 @@ public class DeleteStudentServlet extends HttpServlet {
                          HttpServletResponse response)
             throws IOException {
 
+        HttpSession session = request.getSession(false);
+
+        if (session == null || session.getAttribute("admin") == null) {
+
+            response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");
+            return;
+        }
         int id =
                 Integer.parseInt(
                         request.getParameter("id")

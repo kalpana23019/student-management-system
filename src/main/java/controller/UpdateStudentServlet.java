@@ -4,10 +4,7 @@ import daoImpl.StudentDAOImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
+import jakarta.servlet.http.*;
 import model.Student;
 
 import java.io.File;
@@ -18,6 +15,14 @@ import java.io.IOException;
 public class UpdateStudentServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null || session.getAttribute("admin") == null) {
+
+            response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");
+            return;
+        }
 
 
         Student student = new Student();

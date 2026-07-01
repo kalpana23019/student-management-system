@@ -42,7 +42,9 @@
  </div>
 
  <form action="<%=request.getContextPath()%>/searchStudent" method="get" class="row g-2 mb-3">
- <div class="col-md-4"> <input type="text" name="keyword" class="form-control" placeholder="Search by Name or Course">
+ <div class="col-md-4">
+
+ <input type="text" name="keyword" class="form-control" placeholder="Search by Name or Course">
   </div>
   <div class="col-auto">
    <button type="submit" class="btn btn-primary"> Search </button>
